@@ -168,6 +168,47 @@ function tod2str($tod)
   $delkaPracky = 1.25/24;
      
      echo "Kdy spustit pracku (1h15 program)<br>";
+     
+     //specialni sekce "start ted"
+     
+     $pozadovanyStart = $tod;
+     $pozadovanyKonec =   $pozadovanyStart + $delkaPracky;
+      #detect conflict
+      $conflictPracka = 0;
+      //$maxConflicts = $delkaMycky*24*60;
+      $maxConflictsPracka = 100;
+      
+      for ($prackaBezi = $pozadovanyStart; $prackaBezi <= $pozadovanyKonec; $prackaBezi= $prackaBezi + ($pozadovanyKonec-$pozadovanyStart)/$maxConflictsPracka)
+      {
+         if (inInterval($prackaBezi, $zacatky, $konce, $pocetZaznamu) == 1)
+          {
+               $conflictPracka = $conflictPracka + 1; // can break here
+          }
+      }
+     
+       $proc =  100-100*$conflictPracka/($maxConflictsPracka+1);
+       
+       if ($proc>95){$color = "#577234";}
+       elseif ($proc>90) {$color = "#a3911f";}
+       else  {$color = "#a22c1e";}
+       
+       echo "<font color=" . $color . ">";
+       if    ($proc>90)
+         {
+          echo "<b>start ted (konec v " . tod2str($pozadovanyKonec) . ") je " . (int)($proc)   . "% ok<br></b>";
+          //echo "zacne v " . tod2str($pozadovanyStart)  . "<br>";
+          
+         }
+         else
+         {
+         echo "start ted je spatne (" . (int)($proc) . "%)<br>";
+         //echo   tod2str($pozadovanyStart) . " - " .  tod2str($pozadovanyKonec)  . "<br>";
+         }
+       echo "</font>";
+
+
+     
+       //smycka dopredu
       for ($hodinyDopredu = 2; $hodinyDopredu < 25; $hodinyDopredu++)
       {
       $pozadovanyStart =$tod +  $hodinyDopredu/24 - $delkaPracky;
