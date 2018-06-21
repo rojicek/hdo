@@ -25,6 +25,18 @@ function inInterval($val, $zacatky, $konce, $size)
     return 0;
 }
 
+
+function tod2str($tod)
+{ 
+    $h =  (int) ($tod*24);
+    $h2 = $h;
+    if ($h>23) {$h2 =  $h2-24;}
+    if ($h2<10) {$h2 = '0' . $h2;}
+    $m = (int) (($tod - $h/24)*24*60);
+    if ($m<10) {$m = '0' . $m;}
+    return $h2 . ":" . $m;
+} 
+
    
   try
   {
@@ -51,7 +63,7 @@ function inInterval($val, $zacatky, $konce, $size)
    $konce = array();
    
    $tod = (float)date('H')/24.0 + (float)date('i')/24.0/60.0 + (float)date('s')/24.0/60.0/60.0;  
-  // echo $tod . "<p>";
+   // echo tod2str($tod) . "<p>";
  
  
  //echo $selectDNESKA . "<p>";
@@ -94,7 +106,7 @@ function inInterval($val, $zacatky, $konce, $size)
                 */
                 
      $delkaMycky = 2.5/24;
-     echo "Kdy spustit mycku<br>";
+     echo "Kdy spustit mycku (2h30 program)<br>";
       for ($hodinyDopredu = 0; $hodinyDopredu < 24; $hodinyDopredu++)
       {
       $pozadovanyStart =$tod +  $hodinyDopredu/24;
@@ -137,10 +149,19 @@ function inInterval($val, $zacatky, $konce, $size)
        
        echo "<font color=" . $color . ">";
        if    ($proc>90)
-         {echo "<b>start za " . $hodinyDopredu . "h je " . (int)($proc)   . "% ok<br></b>";}
+         {
+          echo "<b>start za " . $hodinyDopredu . "h (konec v " . tod2str($pozadovanyKonec) . ") je " . (int)($proc)   . "% ok<br></b>";
+          //echo "zacne v " . tod2str($pozadovanyStart)  . "<br>";
+          
+         }
          else
-         {echo "<b>start za " . $hodinyDopredu . "h je spatne<br></b>";}
+         {
+         echo "<b>start za " . $hodinyDopredu . "h je spatne<br></b>";
+         //echo   tod2str($pozadovanyStart) . " - " .  tod2str($pozadovanyKonec)  . "<br>";
+         }
        echo "</font>";
+      // echo "<p>";
+       
        //od ". $pozadovanyStart . " do " .   $pozadovanyKonec   . " : konflikt = " . 100*$conflict/($maxConflicts+1). "% <br>";
        
       }
