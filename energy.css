@@ -1,0 +1,92 @@
+
+
+div.odkazy
+{
+color: #000000; 
+font-family: Verdana,Geneva,Kalimati,sans-serif; 
+font-size: 10pt; 
+font-style: normal; 
+}
+
+td.odkazy
+{
+color: #000000; 
+font-family: Verdana,Geneva,Kalimati,sans-serif; 
+font-size: 10pt; 
+font-style: normal; 
+}
+
+
+table
+{
+color: #000000; 
+font-family: Verdana,Geneva,Kalimati,sans-serif; 
+font-size: 20pt; 
+font-style: normal; 
+}
+
+table.vnejsi, td.vnejsi
+{
+    font-family: Verdana,Geneva,Kalimati,sans-serif; 
+    border-collapse: collapse;     
+    border-style:none; 
+    padding: 10px;
+    border-spacing: 3px;
+    margin:0 auto;
+    
+    /* debug follows 
+   color: #ff0000;
+   border-style:solid;
+   */ 
+}
+
+table.text, td.text
+{
+    font-family: Verdana,Geneva,Kalimati,sans-serif; 
+    border-collapse: collapse;     
+    border-style:none; 
+    /*padding: 10px;*/
+    border-spacing: 3px;
+    margin:0 auto;
+    font-size: 10pt;
+    
+    /* debug follows 
+   color: #ff0000;
+   border-style:solid;
+   */ 
+}
+
+
+table.byt, td.byt, tr.byt
+{
+    font-family: Verdana,Geneva,Kalimati,sans-serif; 
+    border-collapse: collapse;     
+    border-style:solid;
+    border-color: #000000;
+    border-width:3px; 
+    padding: 10px;
+    border-spacing: 3px; 
+     width: 100%;     
+}
+
+div.mereniteploty
+{
+  font-weight:bold;
+  font-size:larger;
+}
+
+div.odkazy
+{
+color: #000000; 
+font-family: Verdana,Geneva,Kalimati,sans-serif; 
+font-size: 10pt; 
+font-style: normal; 
+}
+
+div.sun
+{
+color: #000000; 
+font-family: Verdana,Geneva,Kalimati,sans-serif; 
+font-size: 13pt; 
+font-style: normal; 
+}
